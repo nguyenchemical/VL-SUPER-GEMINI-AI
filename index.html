@@ -65,30 +65,41 @@
             body { height: 100dvh; }
         }
 
-        /* Standard Number Ball */
+        /* ===== ĐỒNG BỘ MÀU SẮC BÓNG CHUẨN KẾT QUẢ VIETLOTT ===== */
         .number-ball {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 38px; height: 38px;
             border-radius: 50%;
-            background: gold;
-            color: black;
+            color: white;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin: 2px;
-            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.3), 0 3px 8px rgba(0,0,0,0.25);
-            animation: pop 0.4s ease;
+            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.35), 0 3px 8px rgba(0,0,0,0.3);
+            animation: pop 0.35s ease;
             flex-shrink: 0;
         }
 
-        /* Specific Vietlott Colors */
-        .ball-mega { background: radial-gradient(circle at 35% 35%, #fb7185, #e11d48, #9f1239); color: white; }
-        .ball-power { background: radial-gradient(circle at 35% 35%, #fde047, #d97706, #78350f); color: white; }
-        .ball-power-special { background: radial-gradient(circle at 35% 35%, #fb7185, #e11d48, #9f1239); color: white; border: 2px solid #fde047; }
-        .ball-lotto { background: radial-gradient(circle at 35% 35%, #4ade80, #16a34a, #14532d); color: white; }
-        .ball-lotto-special { background: radial-gradient(circle at 35% 35%, #ff8c00, #ea580c, #9a3412); color: white; }
-        .ball-max3d { background: radial-gradient(circle at 35% 35%, #d946ef, #c026d3, #701a75); color: white; }
+        /* Mega 6/45: Màu đỏ rực */
+        .ball-mega { background: radial-gradient(circle at 35% 35%, #ef4444, #dc2626, #991b1b); }
+
+        /* Power 6/55: Vàng ánh đồng, bóng đặc biệt màu đỏ */
+        .ball-power { background: radial-gradient(circle at 35% 35%, #f59e0b, #d97706, #78350f); }
+        .ball-power-special { background: radial-gradient(circle at 35% 35%, #ef4444, #dc2626, #991b1b); border: 2px solid #fbbf24; }
+
+        /* Lotto 5/35: Bóng chính Xanh lá, bóng đặc biệt Cam */
+        .ball-lotto { background: radial-gradient(circle at 35% 35%, #22c55e, #16a34a, #14532d); }
+        .ball-lotto-special { background: radial-gradient(circle at 35% 35%, #f97316, #ea580c, #9a3412); }
+
+        /* Bingo 18: Màu cam tươi */
+        .ball-bingo { background: radial-gradient(circle at 35% 35%, #fb923c, #f97316, #c2410c); }
+
+        /* Max 3D & Max 3D Pro: Màu Tím Hồng Thẫm */
+        .ball-max3d { background: radial-gradient(circle at 35% 35%, #d946ef, #a855f7, #6b21a8); }
+
+        /* Keno & Mặc định */
+        .ball-default { background: radial-gradient(circle at 35% 35%, #3b82f6, #1d4ed8, #1e3a8a); }
 
         @keyframes pop {
             from { transform: scale(0); }
@@ -105,7 +116,6 @@
             to { opacity: 1; }
         }
 
-        /* Direct Header Logo */
         .logo-header {
             border-radius: 18%;
             object-fit: cover;
@@ -129,12 +139,12 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
 
         #meter-bar { transition: width 0.85s cubic-bezier(0.22, 1, 0.36, 1); }
-        .divider-3d { display: inline-block; width: 2px; height: 24px; background-color: #64748b; margin: 0 4px; align-self: center; flex-shrink: 0; }
+        .divider-3d { display: inline-block; width: 2px; height: 26px; background-color: #64748b; margin: 0 6px; align-self: center; flex-shrink: 0; }
     </style>
 </head>
 <body class="dark">
 
-    <!-- HEADER LOGO LỚN TRỰC TIẾP TRONG KHUNG HEADER - KHÔNG VIỀN -->
+    <!-- HEADER LOGO LỚN TRỰC TIẾP TRONG KHUNG HEADER -->
     <header class="border-b border-slate-700/60 bg-slate-900/90 backdrop-blur-md shrink-0 py-2 px-3 z-30">
         <div class="max-w-4xl mx-auto flex justify-between items-center gap-2">
             
@@ -163,7 +173,6 @@
                     <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
                 </button>
                 
-                <!-- 2 Nút tùy chọn White/Dark + Sound di chuyển lên Header -->
                 <button onclick="toggleDark()" title="Chế độ Tối/Sáng" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg text-amber-300 border border-slate-700 transition">
                     🌙
                 </button>
@@ -177,21 +186,28 @@
     <!-- MAIN APP - KHÔNG CUỘN, VỪA KHÍT MÀN HÌNH -->
     <main class="max-w-4xl mx-auto w-full px-2 sm:px-4 py-2 flex-1 grid grid-cols-1 md:grid-cols-12 gap-2 min-h-0 overflow-hidden">
 
-        <!-- CỘT TRÁI: ĐIỀU KHIỂN & KHUNG HIỂN THỊ KẾT QUẢ VỪA DI CHUYỂN LÊN -->
+        <!-- CỘT TRÁI: ĐIỀU KHIỂN & KHUNG HIỂN THỊ KẾT QUẢ -->
         <div class="md:col-span-6 flex flex-col gap-2 min-h-0 overflow-y-auto custom-scrollbar">
 
-            <!-- KHUNG HIỂN THỊ KẾT QUẢ DỰ ĐOÁN (ĐÃ DI CHUYỂN LÊN VỊ TRÍ NÚT TỐI/SÁNG) -->
+            <!-- KHUNG HIỂN THỊ KẾT QUẢ DỰ ĐOÁN -->
             <div class="custom-card p-2.5 flex-1 flex flex-col min-h-[160px] overflow-hidden shadow-lg border-amber-500/30">
-                <div class="flex items-center justify-between mb-1.5 shrink-0">
-                    <h3 class="text-xs font-bold uppercase text-amber-400 flex items-center gap-1">
+                <div class="flex items-center justify-between mb-1.5 shrink-0 gap-1">
+                    <h3 class="text-xs font-bold uppercase text-amber-400 flex items-center gap-1 shrink-0">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Kết Quả AI Phân Tích
                     </h3>
-                    <span id="active-model-badge" class="text-[9px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
-                        TensorFlow.js
-                    </span>
+
+                    <!-- THÊM STATUS HIỂN THỊ TÊN GAME ĐANG PHÂN TÍCH -->
+                    <div class="flex items-center gap-1">
+                        <span id="current-game-badge" class="text-[9px] text-amber-300 font-bold bg-amber-500/20 px-2 py-0.5 rounded-full border border-amber-500/30 uppercase tracking-wider">
+                            MEGA 6/45
+                        </span>
+                        <span id="active-model-badge" class="text-[9px] text-emerald-400 font-mono font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                            TensorFlow.js
+                        </span>
+                    </div>
                 </div>
 
-                <div id="scanArea" class="shrink-0 text-xs"></div>
+                <div id="scanArea" class="shrink-0 text-xs text-center"></div>
                 <div id="result" class="flex-1 overflow-y-auto custom-scrollbar flex flex-col items-center justify-center p-1 space-y-2">
                     <div class="text-xs text-slate-400 italic text-center">
                         Nhấn chọn một loại hình bên dưới để AI tiến hành quét và tạo bộ số!
@@ -199,7 +215,7 @@
                 </div>
             </div>
 
-            <!-- NÚT TẠO LOẠI HÌNH XỔ SỐ (GIỮ NGUYÊN BỘ NÚT INDEX-1) -->
+            <!-- NÚT TẠO LOẠI HÌNH XỔ SỐ -->
             <div class="custom-card p-2 shrink-0">
                 <div class="text-[10px] font-bold uppercase text-slate-400 mb-1 flex justify-between items-center">
                     <span>Chọn loại hình xổ số</span>
@@ -245,7 +261,7 @@
         <!-- CỘT PHẢI: JACKPOT METER & TRẠNG THÁI AI MODEL TENSORFLOW -->
         <div class="md:col-span-6 flex flex-col gap-2 min-h-0">
 
-            <!-- THANH JACKPOT METER GIỐNG 100% CODE MẪU -->
+            <!-- THANH JACKPOT METER -->
             <div id="jackpot-meter-card" class="custom-card p-2.5 space-y-1.5 shrink-0">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center gap-1.5">
@@ -295,9 +311,8 @@
 
     </main>
 
-    <!-- LOGIC SCRIPT - TÍCH HỢP TOÀN BỘ INDEX-1 & CODE MẪU -->
+    <!-- LOGIC SCRIPT CHÍNH -->
     <script>
-        // ========== CẤU HÌNH CLOUDFLARE WORKER LIVE 24/7 ==========
         const WORKER_BASE = "https://gemini.nguyenchemical.workers.dev/";
         
         let audioCtx = null;
@@ -306,7 +321,25 @@
         let lastRealJackpotBillionVnd = null;
         let currentGameType = "mega645";
 
-        // Khởi tạo AudioContext
+        const GAME_NAMES = {
+            "mega645": "MEGA 6/45",
+            "power655": "POWER 6/55",
+            "max3d": "MAX 3D",
+            "max3dpro": "MAX 3D PRO",
+            "keno": "KENO",
+            "lotto535": "LOTTO 5/35",
+            "bingo": "BINGO 18"
+        };
+
+        function updateGameBadge(type) {
+            currentGameType = type;
+            const badge = document.getElementById("current-game-badge");
+            if (badge) {
+                badge.innerText = GAME_NAMES[type] || type.toUpperCase();
+            }
+            updateAutoAlgoHint();
+        }
+
         function initAudio() {
             if (!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -395,7 +428,6 @@
             el.innerHTML = `<div>${html}</div>` + el.innerHTML;
         }
 
-        // AUTO CHỌN AI MODEL THEO LOẠI HÌNH GAME
         function selectBestAlgo(gameType, dataLen) {
             if (gameType.startsWith('max3d')) {
                 return { algo: 'markov-chain', reason: 'Max 3D → Chuỗi Markov' };
@@ -418,7 +450,6 @@
             }
         }
 
-        // TÍNH METER JACKPOT ĐỘNG DỰA TRÊN KẾT QUẢ DỰ ĐOÁN
         function computeDynamicMeter(probs, generatedSets) {
             if (!probs || !generatedSets || generatedSets.length === 0) return 0;
             const arr = Array.from(probs);
@@ -460,7 +491,7 @@
             }
         }
 
-        // HỂ THỐNG HIỂN THỊ BÓNG ĐÚNG CHUẨN ĐỊNH DẠNG VIETLOTT
+        // ===== HÀM HIỂN THỊ BÓNG CHUẨN ĐỊNH DẠNG VIETLOTT =====
         function displayBalls(numbers, gameType = currentGameType) {
             const resDiv = document.getElementById('result');
             let html = `<div class="flex flex-wrap justify-center items-center gap-1 my-1">`;
@@ -477,13 +508,15 @@
                 const spec = numbers[5];
                 html += main.map(n => `<span class="number-ball ball-lotto">${n < 10 ? '0'+n : n}</span>`).join('');
                 if (spec) html += `<span class="number-ball ball-lotto-special">${spec < 10 ? '0'+spec : spec}</span>`;
+            } else if (gameType === 'bingo') {
+                html += numbers.map(n => `<span class="number-ball ball-bingo">${n < 10 ? '0'+n : n}</span>`).join('');
             } else if (gameType.startsWith('max3d')) {
                 html += numbers.map((str, idx) => {
                     const b = String(str).split('').map(d => `<span class="number-ball ball-max3d">${d}</span>`).join('');
                     return idx < numbers.length - 1 ? b + `<span class="divider-3d"></span>` : b;
                 }).join('');
             } else {
-                html += numbers.map(n => `<span class="number-ball">${n < 10 ? '0'+n : n}</span>`).join('');
+                html += numbers.map(n => `<span class="number-ball ball-default">${n < 10 ? '0'+n : n}</span>`).join('');
             }
 
             html += `</div>`;
@@ -506,7 +539,6 @@
             }, 800);
         }
 
-        // TENSORFLOW DEEP NEURAL NETWORK TRAINING ENGINE
         async function runTensorFlowTraining(gameType) {
             const statusEl = document.getElementById('training-status');
             const progressEl = document.getElementById('training-progress');
@@ -520,7 +552,6 @@
             const isDigit = gameType.startsWith('max3d');
             const featureSize = isDigit ? 10 : maxNum;
 
-            // Chuyển đổi dữ liệu Lịch sử thành Tensor One-Hot / Normalization
             const vectors = rawDraws.slice(0, 30).map(d => {
                 const v = new Array(featureSize).fill(0);
                 if (isDigit) {
@@ -541,7 +572,6 @@
             const xs = tf.tensor2d(vectors.slice(0, -1));
             const ys = tf.tensor2d(vectors.slice(1));
 
-            // Khởi tạo Mạng Nơ-ron (Dense / LSTM)
             const model = tf.sequential();
             model.add(tf.layers.dense({ units: 64, activation: 'relu', inputShape: [featureSize] }));
             model.add(tf.layers.dropout({ rate: 0.2 }));
@@ -570,7 +600,6 @@
             return probs;
         }
 
-        // CÁC HÀM TẠO BỘ SỐ CHÍNH THEO YÊU CẦU INDEX-1
         function randomNumbers(count, max) {
             let arr = [];
             while (arr.length < count) {
@@ -587,9 +616,12 @@
             return pool.slice(0, count).map(x => x.number).sort((a, b) => a - b);
         }
 
+        function generate3DString() {
+            return Array.from({length: 3}, () => Math.floor(Math.random() * 10)).join('');
+        }
+
         function generateMega() {
-            currentGameType = "mega645";
-            updateAutoAlgoHint();
+            updateGameBadge("mega645");
             showScan(() => {
                 const nums = randomNumbers(6, 45);
                 displayBalls(nums, "mega645");
@@ -598,8 +630,7 @@
         }
 
         function generatePower() {
-            currentGameType = "power655";
-            updateAutoAlgoHint();
+            updateGameBadge("power655");
             showScan(() => {
                 const main = randomNumbers(6, 55);
                 let spec = Math.floor(Math.random() * 55) + 1;
@@ -611,37 +642,30 @@
         }
 
         function generateMax3D() {
-            currentGameType = "max3d";
-            updateAutoAlgoHint();
+            updateGameBadge("max3d");
             showScan(() => {
-                const res = [Math.floor(Math.random() * 1000).toString().padStart(3, '0')];
+                const res = [generate3DString()];
                 displayBalls(res, "max3d");
                 applyMeterScore(72);
             });
         }
 
         function generateMax3DPro() {
-            currentGameType = "max3dpro";
-            updateAutoAlgoHint();
+            updateGameBadge("max3dpro");
             showScan(() => {
-                const res = [
-                    Math.floor(Math.random() * 1000).toString().padStart(3, '0'),
-                    Math.floor(Math.random() * 1000).toString().padStart(3, '0')
-                ];
+                const res = [generate3DString(), generate3DString()];
                 displayBalls(res, "max3dpro");
                 applyMeterScore(85);
             });
         }
 
         function generateKeno() {
-            currentGameType = "keno";
-            updateAutoAlgoHint();
+            updateGameBadge("keno");
             showScan(() => displayBalls(randomNumbers(10, 80), "keno"));
         }
 
         function generateLotto() {
-            currentGameType = "lotto535";
-            updateAutoAlgoHint();
+            updateGameBadge("lotto535");
             showScan(() => {
                 const main = randomNumbers(5, 35);
                 const spec = Math.floor(Math.random() * 12) + 1;
@@ -651,16 +675,36 @@
         }
 
         function generateBingo() {
-            currentGameType = "bingo";
-            updateAutoAlgoHint();
-            showScan(() => displayBalls(randomNumbers(18, 90), "bingo"));
+            updateGameBadge("bingo");
+            showScan(() => displayBalls(randomNumbers(3, 18), "bingo"));
         }
 
+        // ===== SỬA LỖI TENSORFLOW AI SINH SAI ĐỊNH DẠNG MAX 3D PRO =====
         async function generateSmartAI() {
             showScan(async () => {
-                logTrain(`<b class="text-amber-400">[Start]</b> Kích hoạt TensorFlow AI Engine...`);
+                logTrain(`<b class="text-amber-400">[Start TensorFlow]</b> Tạo bộ số thông minh cho: ${GAME_NAMES[currentGameType]}`);
                 const probs = await runTensorFlowTraining(currentGameType);
-                let selected = smartAI(6, 45);
+                
+                let selected;
+                if (currentGameType === 'max3d') {
+                    selected = [generate3DString()];
+                } else if (currentGameType === 'max3dpro') {
+                    selected = [generate3DString(), generate3DString()];
+                } else if (currentGameType === 'power655') {
+                    const main = smartAI(6, 55);
+                    let spec = Math.floor(Math.random() * 55) + 1;
+                    while (main.includes(spec)) spec = Math.floor(Math.random() * 55) + 1;
+                    selected = [...main, spec];
+                } else if (currentGameType === 'lotto535') {
+                    const main = smartAI(5, 35);
+                    let spec = Math.floor(Math.random() * 12) + 1;
+                    selected = [...main, spec];
+                } else if (currentGameType === 'bingo') {
+                    selected = randomNumbers(3, 18);
+                } else {
+                    selected = smartAI(6, 45);
+                }
+
                 displayBalls(selected, currentGameType);
                 const score = computeDynamicMeter(probs, [selected]);
                 applyMeterScore(score);
@@ -683,10 +727,10 @@
             });
         }
 
-        function hotNumbers() { showScan(() => { displayBalls([7, 14, 23, 32, 41, 45], "mega645"); applyMeterScore(88); }); }
-        function frequentNumbers() { showScan(() => { displayBalls([3, 9, 18, 27, 36, 44], "mega645"); applyMeterScore(82); }); }
-        function highChance() { showScan(() => { displayBalls([5, 12, 19, 28, 34, 42], "mega645"); applyMeterScore(91); }); }
-        function popularChoice() { showScan(() => { displayBalls([1, 8, 16, 24, 35, 43], "mega645"); applyMeterScore(75); }); }
+        function hotNumbers() { showScan(() => { displayBalls([7, 14, 23, 32, 41, 45], currentGameType); applyMeterScore(88); }); }
+        function frequentNumbers() { showScan(() => { displayBalls([3, 9, 18, 27, 36, 44], currentGameType); applyMeterScore(82); }); }
+        function highChance() { showScan(() => { displayBalls([5, 12, 19, 28, 34, 42], currentGameType); applyMeterScore(91); }); }
+        function popularChoice() { showScan(() => { displayBalls([1, 8, 16, 24, 35, 43], currentGameType); applyMeterScore(75); }); }
 
         // KẾT NỐI LIVE ONLINE 24/7 QUA CLOUDFLARE WORKERS
         async function loadLiveData() {
@@ -716,13 +760,12 @@
             await loadLiveData();
         }
 
-        // Tự động làm mới mỗi 60s
         setInterval(loadLiveData, 60000);
 
         window.onload = () => {
             if (window.lucide) lucide.createIcons();
             loadLiveData();
-            updateAutoAlgoHint();
+            updateGameBadge("mega645");
         };
     </script>
 </body>
